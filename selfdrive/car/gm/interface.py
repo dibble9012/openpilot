@@ -89,9 +89,18 @@ class CarInterface(CarInterfaceBase):
       ret.minEnableSpeed = -1
       ret.mass = 1607. + STD_CARGO_KG
       ret.wheelbase = 2.69
-      ret.steerRatio = 15.7
+      ret.steerRatio = 16.38
+      tire_stiffness_factor = 0.465 # localizer live params, Michelin Energy Saver A/S
       ret.steerRatioRear = 0.
       ret.centerToFront = ret.wheelbase * 0.4  # wild guess
+      
+      ret.lateralTuning.init('indi')
+      ret.lateralTuning.indi.innerLoopGain = 4.0
+      ret.lateralTuning.indi.outerLoopGain = 15.0
+      ret.lateralTuning.indi.timeConstant = 4.0
+      ret.lateralTuning.indi.actuatorEffectivenessV = [25.0, 2.0]
+      ret.lateralTuning.indi.actuatorEffectivenessBP = [0.0, 31.0]
+      ret.steerActuatorDelay = 0.1
 
     elif candidate == CAR.MALIBU:
       # supports stop and go, but initial engage must be above 18mph (which include conservatism)
