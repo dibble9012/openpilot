@@ -34,7 +34,7 @@ OffroadHome::OffroadHome(QWidget *parent) : QWidget(parent) {
   date->setStyleSheet(R"(font-size: 55px;)");
   header_layout->addWidget(date, 0, Qt::AlignTop | Qt::AlignLeft);
 
-  QLabel *version = new QLabel(QString::fromStdString("openpilot v" + Params().get("Version")));
+  QLabel *version = new QLabel(QString::fromStdString("openpilot kegman 0.8.1 INDI"));
   version->setStyleSheet(R"(font-size: 45px;)");
   header_layout->addWidget(version, 0, Qt::AlignTop | Qt::AlignRight);
 
