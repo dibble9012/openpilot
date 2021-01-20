@@ -82,7 +82,8 @@ class CarState(CarStateBase):
     if self.car_fingerprint == CAR.VOLT:
       self.regenPaddlePressed = bool(pt_cp.vl["EBCMRegenPaddle"]['RegenPaddle'])
       self.frictionBrake = bool(ch_cp.vl["EBCMFrictionBrakeStatus"]['FrictionBrakePressure']),
-      ret.brakePressed = ret.brakePressed or self.regenPaddlePressed
+      #ret.brakePressed = ret.brakePressed or self.regenPaddlePressed
+      ret.brakePressed = self.frictionBrake
       
     ret.cruiseState.enabled = self.pcm_acc_status != AccState.OFF
     ret.cruiseState.standstill = False
