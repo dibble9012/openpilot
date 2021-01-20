@@ -81,7 +81,7 @@ class CarState(CarStateBase):
     # Regen braking is braking
     if self.car_fingerprint == CAR.VOLT:
       self.regenPaddlePressed = bool(pt_cp.vl["EBCMRegenPaddle"]['RegenPaddle'])
-      self.frictionBrake = bool(ch_cp.vl["EBCMFrictionBrakeStatus"]['FrictionBrakePressure']),
+      self.frictionBrake = bool(ch_cp.vl["EBCMFrictionBrakeStatus"]['FrictionBrakePressure'])
       #ret.brakePressed = ret.brakePressed or self.regenPaddlePressed
       ret.brakePressed = self.frictionBrake
       
