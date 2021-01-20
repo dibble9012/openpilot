@@ -107,6 +107,11 @@ class CarState(CarStateBase):
 
 
   @staticmethod
+  def get_chassis_can_parser(CP):
+    signals = [
+      ("FrictionBrakePressure", "EBCMFrictionBrakeStatus", 0),
+    ]
+  
   def get_can_parser(CP):
     # this function generates lists for signal, messages and initial values
     signals = [
