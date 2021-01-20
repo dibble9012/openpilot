@@ -81,7 +81,7 @@ class CarState(CarStateBase):
     # Regen braking is braking
     if self.car_fingerprint == CAR.VOLT:
       self.regenPaddlePressed = bool(pt_cp.vl["EBCMRegenPaddle"]['RegenPaddle'])
-      self.frictionBrake = bool(ch_cp.vl["EBCMFrictionBrakeStatus"]['FrictionBrakePressure'])
+      self.frictionBrake = bool(ch_cp.vl["ECMPRDNL"]['ESPButton']) #testing whether this turns the speed text red
       #ret.brakePressed = ret.brakePressed or self.regenPaddlePressed
       ret.brakePressed = self.frictionBrake
       
@@ -110,10 +110,10 @@ class CarState(CarStateBase):
 
 
   @staticmethod
-  def get_chassis_can_parser(CP):
-    signals = [
-      ("FrictionBrakePressure", "EBCMFrictionBrakeStatus", 0),
-    ]
+  #def get_chassis_can_parser(CP):
+    #signals = [
+      #("FrictionBrakePressure", "EBCMFrictionBrakeStatus", 0),
+    #]
   
   def get_can_parser(CP):
     # this function generates lists for signal, messages and initial values
@@ -145,6 +145,7 @@ class CarState(CarStateBase):
       ("DistanceButton", "ASCMSteeringButton", 0),
       ("LKATorqueDelivered", "PSCMStatus", 0),
       ("EngineRPM", "ECMEngineStatus", 0),
+      ("ESPButton", "ECMPRDNL", 0), #This is a test for turning the speed text red
     ]
 
     if CP.carFingerprint == CAR.VOLT:
